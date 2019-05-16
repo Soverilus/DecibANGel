@@ -5320,7 +5320,7 @@ MonoBehaviour:
   rotSpeed: 5
   boostMult: 5
   boostCooldown: 0.6
-  boostDuration: 0.5
+  boostDuration: 0.25
   maxRotSpeed: 50
 --- !u!1 &890192563
 GameObject:
