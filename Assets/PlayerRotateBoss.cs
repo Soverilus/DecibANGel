@@ -51,10 +51,38 @@ public class PlayerRotateBoss : MonoBehaviour {
             }
         }
         else if (takeMouseInputs) {
-            myInputs = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * mouseMultiplier;
+            myInputs = new Vector2(Mathf.Clamp(myInputs.x,-maxRotSpeed,maxRotSpeed), Mathf.Clamp(myInputs.y, -maxRotSpeed, maxRotSpeed)) + new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * mouseMultiplier;
+            if (timer >= boostCooldown) {
+                if (Input.GetAxis("Fire1") != 0) {
+                    if (!isAxisInUse) {
+                        timer = boostDuration;
+                        isAxisInUse = true;
+                    }
+                }
+                else {
+                    isAxisInUse = false;
+                }
+            }
+            else {
+                timer += Time.deltaTime;
+            }
         }
         else if (takeKeyboardInputs) {
             myInputs = new Vector2(Input.GetAxis("Keyboard X"), Input.GetAxis("Keyboard Y")) * keyboardMultiplier;
+            if (timer >= boostCooldown) {
+                if (Input.GetAxis("Fire1") != 0) {
+                    if (!isAxisInUse) {
+                        timer = boostDuration;
+                        isAxisInUse = true;
+                    }
+                }
+                else {
+                    isAxisInUse = false;
+                }
+            }
+            else {
+                timer += Time.deltaTime;
+            }
         }
 
         if (timer < 0) {

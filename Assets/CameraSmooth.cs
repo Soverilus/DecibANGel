@@ -22,7 +22,7 @@ public class CameraSmooth : MonoBehaviour
     {
         target = myTarget.transform;
         dirToTarget = Vector3.Normalize(target.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, myTarget.transform.rotation, 0.1f);
-        transform.position = Vector3.Slerp(transform.position, dirToTarget * originalDistance, 0.1f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, myTarget.transform.rotation, 0.15f);
+        transform.position = Vector3.Slerp(transform.position, dirToTarget * originalDistance, 0.15f);
     }
 }
