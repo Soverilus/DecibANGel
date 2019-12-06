@@ -18,10 +18,16 @@ public class PlayerRotateBoss : MonoBehaviour {
     public float boostDuration;
     float timer = 0;
     public float maxRotSpeed = 50;
+    int myShields;
+    public int maxShields;
+    public ParticleSystem myPS;
+    int myEmissionsMax;
 
     bool isAxisInUse = false;
 
     private void Start() {
+        myEmissionsMax = myPS.main.maxParticles;
+        myShields = maxShields;
         boostDuration *= -1;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -96,5 +102,18 @@ public class PlayerRotateBoss : MonoBehaviour {
 
         transform.Rotate(Vector3.up, -rotX);
         transform.Rotate(Vector3.right, rotY);
+    }
+
+    void ShieldHandler() {
+        
+    }
+
+    public void OnShieldHit() {
+        if (myShields > 0) {
+            myShields = -1;
+        }
+        else {
+            //kill the player
+        }
     }
 }
